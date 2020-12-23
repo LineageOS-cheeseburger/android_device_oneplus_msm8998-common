@@ -4,3 +4,8 @@ allow system_app proc_touchpanel:file { rw_file_perms };
 allow system_app sysfs_fpc_key:file { rw_file_perms };
 allow system_app sysfs_fpc_screen:file { rw_file_perms };
 allow system_app sysfs_fpc_proximity:file { rw_file_perms };
+
+
+allow system_app sysfs_leds:dir { search };
+allow system_app sysfs_button_backlight:lnk_file { rw_file_perms };
+allow system_app sysfs_button_backlight_max:lnk_file { rw_file_perms };
