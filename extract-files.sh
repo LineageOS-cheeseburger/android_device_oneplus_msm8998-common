@@ -82,6 +82,22 @@ function blob_fixup() {
         vendor/etc/permissions/com.fingerprints.extension.xml )
             sed -i "s/\/system\/framework\//\/vendor\/framework\//g" "${2}"
             ;;
+        vendor/lib/libmmosal.so | vendor/lib64/libmmosal.so |
+        lib/libwfdnative.so | lib64/libwfdnative.so )
+            patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
+            ;;
+        lib64/libwfdnative.so )
+            patchelf --add-needed "libshim_wfdservice.so" "${2}"
+            ;;
+        lib/libwfdcommonutils.so )
+            patchelf --add-needed "libshim_wfdservice.so" "${2}"
+            ;;
+        lib/libwfdmmsrc.so )
+            patchelf --add-needed "libshim_wfdservice.so" "${2}"
+            ;;
+        lib/libwfdmmsink.so )
+            patchelf --add-needed "libshim_wfdservice.so" "${2}"
+            ;;
     esac
 }
 

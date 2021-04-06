@@ -506,7 +506,9 @@ PRODUCT_COPY_FILES += \
 # Wi-Fi Display
 PRODUCT_PACKAGES += \
     libaacwrapper \
-    libnl
+    libnl \
+    libstagefright_enc_common \
+    libshim_wfdservice
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
